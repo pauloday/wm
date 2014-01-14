@@ -40,6 +40,7 @@ add_desktop() {
 	name="$(expr $num_desks + 1)/$1"
 	bspc monitor -a $name
 	bspc desktop -f $name
+	$wm/autorun_files/$1
 }
 
 ## remove_desktop name
