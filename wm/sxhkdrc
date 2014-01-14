@@ -84,10 +84,10 @@ super + space
     ls -w 1 /usr/bin | $base/menu.sh | bash
 
 super + d
-    $tools/pager add
+    $tools/pager.sh add
 
 super + shift + d
-    $tools/pager remove
+    $tools/pager.sh remove
 
 # make sxhkd reload its configuration files:
 super + Escape

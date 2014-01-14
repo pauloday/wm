@@ -43,7 +43,7 @@ colorize_desktop_strings() {
 
 output_stats() {
 	while true; do
-		time=$(date +"%D %r")
+		time=$(date +"%D %_I:%M %p")
 		battery=$(acpi -b | awk '{print $4}' | tr -d ",%")
 		if [ "$battery" -lt 65 ]; then
 			battery=$(colorize_fg "$battery%" ${colors[yellow]})
