@@ -69,6 +69,7 @@ info_width=$(expr $screen_width - $desktops_width - $stats_width)
 
 stats_x=$(expr $screen_width - $stats_width)
 
-$base/controller.sh list | colorize_desktop_strings | $base/bar.sh $side -ta l -w $desktops_width -x 0 &
+$base/controller.sh list | colorize_desktop_strings |
+	dzen2 -y $screen_height -ta l -w $desktops_width -x 0 &
 $tools/piped_bar.sh $info_pipe $side -ta l -w $info_width -x $desktops_width &
-output_stats | $base/bar.sh $side -ta r -w $stats_width -x $stats_x
+output_stats | dzen2 -y $screen_height -ta r -w $stats_width -x $stats_x

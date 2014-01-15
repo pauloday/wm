@@ -62,7 +62,7 @@ super + ctrl + {1-9}
     bspc window -r 0.{1-9}
 
 super + {_,shift + }{1-9,0}
-    bspc {desktop -f,window -d} ^{1-9,10}
+    $tools/switch_desks.sh {focus,window} {1-9,10}
 
 ~button1
     bspc pointer -g focus
@@ -86,8 +86,17 @@ super + space
 super + d
     $tools/pager.sh add
 
+super + a
+    $tools/add_autorun.sh
+
 super + shift + d
     $tools/pager.sh remove
+
+super + a
+    $tools/add_autorun.sh
+
+F1
+    $tools/help.sh
 
 # make sxhkd reload its configuration files:
 super + Escape

@@ -1,7 +1,8 @@
 #!/bin/bash
 
-bspc monitor -d "1/scratch"
+bspc monitor -d "1/"
 bspc config window_gap 2
 
 bspc config split_ratio         0.50
+bspc config bottom_padding 20
 $tools/default_bar.sh bottom

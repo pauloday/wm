@@ -15,4 +15,4 @@ shift
 if [ "$mode" == "manual" ]; then
 	shift
 fi
-tail -f $fifo | $base/bar.sh $@
+tail -f $fifo | dzen2 $@

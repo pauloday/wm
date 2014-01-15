@@ -8,7 +8,7 @@
 ## get_simple_name desktop
 ## removes the n/ from the front of a desktop name
 get_simple_name() {
-	echo $1 | sed 's/^[0-9]*\/\(.*\)/\1/'
+	echo $1 | cut -d/ -f2
 }
 
 ## format_desktop_string string
@@ -58,18 +58,27 @@ remove_desktop() {
 	done
 }
 
+## rename_desktop name new
+## Renames named desktop to n/new
+rename_desktop() {
+	num=$(echo $1 | cut -d/ -f1)
+	bspc desktop $1 -n "$num/$2"
+}
+
 ### main
 
 case $1 in
 	list)
-		bspc control --subscribe | format_desktop_strings
-		bspc_pid=$!
-		trap "kill $bspc_pid" EXIT
+		( bspc control --subscribe & echo $! >&3 ) 3>pid | format_desktop_strings
+		trap "kill $(<pid)" EXIT
 		;;
 	add)
 		add_desktop $2
 		;;
 	remove)
 		remove_desktop $2
+		;;
+	rename)
+		rename_desktop $2
 		;;
 esac
