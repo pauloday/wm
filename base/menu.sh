@@ -7,4 +7,4 @@
 
 source $wm/style.sh
 
-dmenu -nf "${colors[fg]}" -nb "${colors[bg]}" -sf "${colors[bg]}" -sb "${colors[fg]}" -fn "$font"
+dmenu -f -i -dim 0.4 -nf "${colors[fg]}" -nb "${colors[bg]}" -sf "${colors[bg]}" -sb "${colors[fg]}" -fn "$font" "$@"

@@ -1,6 +1,7 @@
 #!/bin/bash
-### desktops.sh [list|add|remove] <desktop>
+### desktops.sh [list|add|remove|rename newname] <desktop>
 ### Control or query desktops
+### For remove and rename, desktop can be either "n/name" or just "name"
 ### list prints information to stdout formatted like:
 ###	":[O|o|F|f] <desktop1> [...] <desktop2>"
 ### 	where a o means occupied, f means free, and a capital letter means focused
@@ -9,6 +10,13 @@
 ## removes the n/ from the front of a desktop name
 get_simple_name() {
 	echo $1 | cut -d/ -f2
+}
+
+## get_full_name name
+## Gets the full desktop name for name
+## name only has to be enough to uniquely identify the desktop
+get_full_name() {
+	bspc query -D | grep $1
 }
 
 ## format_desktop_string string
@@ -47,7 +55,7 @@ add_desktop() {
 ## removes the named desktop and renames the others so their names match their shortcuts
 ## does not work if desktop is occupied
 remove_desktop() {
-	name=$1
+	name=$(get_full_name $1)
 	bspc monitor -r $name
 	desktops=( $(bspc query -D) )
 	index=1
@@ -61,24 +69,26 @@ remove_desktop() {
 ## rename_desktop name new
 ## Renames named desktop to n/new
 rename_desktop() {
-	num=$(echo $1 | cut -d/ -f1)
+	num=$(echo $(get_full_name $1) | cut -d/ -f1)
 	bspc desktop $1 -n "$num/$2"
 }
 
 ### main
-
+name=$2
 case $1 in
 	list)
 		( bspc control --subscribe & echo $! >&3 ) 3>pid | format_desktop_strings
 		trap "kill $(<pid)" EXIT
 		;;
 	add)
-		add_desktop $2
+		add_desktop $name
 		;;
 	remove)
-		remove_desktop $2
+		remove_desktop $name
 		;;
 	rename)
-		rename_desktop $2
+		new=$2
+		name=$3
+		rename_desktop $name $new
 		;;
 esac

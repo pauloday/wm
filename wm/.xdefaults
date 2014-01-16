@@ -1,7 +1,7 @@
 ! vim: set filetype=xdefaults :
 ! gjm scheme
 
-dzen2*font: PragmataPro:pixelsize=14
+dzen2*font: Roboto Condensed Light:size=12
 xterm*faceName: PragmataPro:pixelsize=14
 dzen2*foreground: #f2f1f0
 dzen2*background: #282828

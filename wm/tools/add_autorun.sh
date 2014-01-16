@@ -2,14 +2,12 @@
 ### add_autorun.sh
 ### adds a line to an autorun file
 
-menu1_help="Name of the desktop to add a autorun command for"
-name=$(ls -w 1 $wm/autorun_files | $tools/helped_menu.sh "$menu1_help")
+name=$(ls -w 1 $wm/autorun_files | $base/menu.sh -p "Desktop:")
 if [ ! "$name" ]; then
 	exit
 fi
 
-menu2_help="Line to run everytime desktop $name is started"
-line=$(ls -w 1 /usr/bin | $tools/helped_menu.sh "$menu2_help")
+line=$(ls -w 1 /usr/bin | $base/menu.sh -p "Command:")
 file="$wm/autorun_files/$name"
 if [ ! -a $file ]; then
 	echo "#!/bin/bash" > $file

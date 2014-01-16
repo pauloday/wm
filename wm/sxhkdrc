@@ -92,11 +92,17 @@ super + a
 super + shift + d
     $tools/pager.sh remove
 
+super + r
+    $tools/pager.sh rename
+
 super + a
     $tools/add_autorun.sh
 
 F1
     $tools/help.sh
+
+super + shift + s
+    $tools/setup.sh
 
 # make sxhkd reload its configuration files:
 super + Escape
