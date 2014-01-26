@@ -1,7 +1,8 @@
 #!/bin/bash
-### desktops.sh [list|add|remove|rename newname] <desktop>
+### desktops.sh [list|add|new|remove|rename newname] <desktop>
 ### Control or query desktops
 ### For remove and rename, desktop can be either "n/name" or just "name"
+### Add switches and executes autorun file, new simply adds
 ### list prints information to stdout formatted like:
 ###	":[O|o|F|f] <desktop1> [...] <desktop2>"
 ### 	where a o means occupied, f means free, and a capital letter means focused
@@ -38,15 +39,26 @@ format_desktop_strings() {
 	done
 }
 
+## new_desktop name
+## creates a new desktop, name optional
+## prints the full name of the new desk to stdout
+new_desktop() {
+	name=$1
+	num_desks=$(bspc query -D | wc -l)
+	name="$(expr $num_desks + 1)/$1"
+	bspc monitor -a $name
+	echo $name
+}
+
 ## add_desktop name
 ## adds and focuses a desktop called n/name, where n is it's shortcut
 ##   (i.e. mod+n switches to it)
 ## desktop names shouldn't have the characters: ^ :
 add_desktop() {
-	name=$1
-	num_desks=$(bspc query -D | wc -l)
-	name="$(expr $num_desks + 1)/$1"
-	bspc monitor -a $name
+	if [ ! $name ]; then
+		return 1
+	fi
+	name=$(new_desktop $1)
 	bspc desktop -f $name
 	$wm/autorun_files/$1
 }
@@ -83,6 +95,10 @@ case $1 in
 	add)
 		add_desktop $name
 		;;
+	new)
+		new_desktop $name
+		;;
+		
 	remove)
 		remove_desktop $name
 		;;

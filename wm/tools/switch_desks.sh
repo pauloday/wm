@@ -34,9 +34,11 @@ windows() {
 
 if [ "$2" -gt "$num_desks" ]; then
 	if [ "$(name $last_desk)" -o "$(windows $last_desk)" ]; then
-		$base/controller.sh add
+		name=$($base/controller.sh new)
+		switch $1 "$name"
+		exit
 	fi
-		switch $1 $num_desks
+	switch $1 "^$num_desks"
 	exit
 fi
 
