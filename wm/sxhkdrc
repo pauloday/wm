@@ -5,7 +5,7 @@
 super + alt + Escape
     bspc quit
 
-super + w
+super + shift + w
     bspc window -c
 
 super + t
@@ -103,6 +103,24 @@ F1
 
 super + shift + s
     $tools/setup.sh
+
+XF86AudioRaiseVolume
+    pamixer --increase 10
+
+XF86AudioLowerVolume
+    pamixer --decrease 10
+
+XF86MonBrightnessUp
+    sudo $tools/brightness_change.sh screen up
+
+XF86MonBrightnessDown
+    sudo $tools/brightness_change.sh screen down
+
+XF86KbdBrightnessUp
+    sudo $tools/brightness_change.sh keys up
+
+XF86KbdBrightnessDown
+    sudo $tools/brightness_change.sh keys down
 
 # make sxhkd reload its configuration files:
 super + Escape

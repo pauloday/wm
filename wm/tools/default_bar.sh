@@ -1,9 +1,8 @@
 #!/bin/bash
-### default_bar [top|bottom]
+### default_bar
 ### Displays the default system panel
 
 source $wm/style.sh
-side=$1
 
 ## colorize_fg <string> <color>
 ## Returns string colorized for dzen2
@@ -55,7 +54,10 @@ output_stats() {
 			battery="$battery%"
 		fi
 		separator=$(colorize_fg "|" "${colors[grey]}")
-		echo "$battery $separator $time"
+		wireless=$(cat /proc/net/wireless | tail -1 | cut -f4 | tr -d.)
+		btc=$(curl --connect-timeout 10 http://data.mtgox.com/api/2/BTCUSD/money/ticker |\
+			grep -Po '"display":"\$[0-9]*\.[0-9][0-9]"' | cut -d: -f2 | tr -d '"' | head -1)
+		echo "$wireless $separator $battery $separator $time"
 		sleep 20
 	done
 }
@@ -71,5 +73,5 @@ stats_x=$(expr $screen_width - $stats_width)
 
 $base/controller.sh list | colorize_desktop_strings |
 	dzen2 -y $screen_height -ta l -w $desktops_width -x 0 &
-$tools/piped_bar.sh $info_pipe $side -ta l -w $info_width -x $desktops_width &
+$tools/piped_bar.sh $info_pipe -y $screen_height -ta l -w $info_width -x $desktops_width &
 output_stats | dzen2 -y $screen_height -ta r -w $stats_width -x $stats_x
