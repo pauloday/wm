@@ -18,8 +18,8 @@ case $mode in
 		fi
 		;;
 	rename)
-		current_desk=$(bspc query -d focused -D | cut -d/ -f2)
-		name=$($base/menu.sh -noinput -p "New name for $current_desk:")
+		current_desk=$(bspc query -d focused -D)
+		name=$($base/menu.sh -noinput -p "New name:")
 		if [ $name ]; then
 			$base/controller.sh rename $name $current_desk
 		fi
