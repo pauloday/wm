@@ -57,7 +57,8 @@ new_desktop() {
 ## desktop names shouldn't have the characters: ^ :
 add_desktop() {
 	focused_name=$(bspc query -d focused -D)
-	if [ ! $($focused_name | get_simple_name) ]; then 
+	focused_windows=$(bspc query -d focused -W)
+	if [ ! $($focused_name | get_simple_name)  && ! $focused_windows ]; then 
 		rename_desktop $focused_name $name
 	else
 		new_desktop $name
