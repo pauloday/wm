@@ -51,15 +51,18 @@ new_desktop() {
 }
 
 ## add_desktop name
-## adds and focuses a desktop called n/name, where n is it's shortcut
-##   (i.e. mod+n switches to it)
+## adds a desktop called n/name, where n is the super + n shortcut
+## if the focused desktop is empty and unnamed, it is replaced with n/name
+## otherwise n/name is added and focused
 ## desktop names shouldn't have the characters: ^ :
 add_desktop() {
-	if [ ! $name ]; then
-		return 1
+	focused_name=$(bspc query -d focused -D)
+	if [ ! $($focused_name | get_simple_name) ]; then 
+		rename_desktop $focused_name $name
+	else
+		new_desktop $name
+		bspc desktop -f $name
 	fi
-	name=$(new_desktop $1)
-	bspc desktop -f $name
 	$wm/autorun_files/$1
 }
 
@@ -82,7 +85,8 @@ remove_desktop() {
 ## Renames named desktop to n/new
 rename_desktop() {
 	num=$(echo $(get_full_name $1) | cut -d/ -f1)
-	bspc desktop $1 -n "$num/$2"
+	old_name=$(get_full_name $1)
+	bspc desktop $old_name -n "$num/$2"
 }
 
 ### main
