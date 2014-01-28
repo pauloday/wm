@@ -1,8 +1,9 @@
 #!/bin/bash
-### desktops.sh [list|add|new|remove|rename newname] <desktop>
+### desktops.sh [list|add|new|remove|cleanup|rename newname] <desktop>
 ### Control or query desktops
 ### For remove and rename, desktop can be either "n/name" or just "name"
 ### Add switches and executes autorun file, new simply adds
+### Cleanup deletes all empty desks
 ### list prints information to stdout formatted like:
 ###	":[O|o|F|f] <desktop1> [...] <desktop2>"
 ### 	where a o means occupied, f means free, and a capital letter means focused
@@ -67,12 +68,9 @@ add_desktop() {
 	$wm/autorun_files/$1
 }
 
-## remove_desktop name
-## removes the named desktop and renames the others so their names match their shortcuts
-## does not work if desktop is occupied
-remove_desktop() {
-	name=$(get_full_name $1)
-	bspc monitor -r $name
+## renumber_desks
+## makes sure all desktops are numbered correctly
+renumber_desks() {
 	desktops=( $(bspc query -D) )
 	index=1
 	for desktop in "${desktops[@]}"; do
@@ -80,6 +78,27 @@ remove_desktop() {
 		bspc desktop $desktop -n "$index/$simple_name"
 		((index++))
 	done
+}
+
+## remove_desktop name
+## removes the named desktop and renames the others so their names match their shortcuts
+## does not work if desktop is occupied
+remove_desktop() {
+	name=$(get_full_name $1)
+	bspc monitor -r $name
+	renumber_desks
+}
+
+## cleanup_desks
+## remove all empty desktops
+cleanup_desks() {
+	desktops=( $(bspc query -D) )
+	index=1
+	for desktop in "${desktops[@]}"; do
+		bspc monitor -r $desktop
+		((index++))
+	done
+	renumber_desks
 }
 
 ## rename_desktop name new
@@ -106,6 +125,9 @@ case $1 in
 		
 	remove)
 		remove_desktop $name
+		;;
+	cleanup)
+		cleanup_desks
 		;;
 	rename)
 		new=$2

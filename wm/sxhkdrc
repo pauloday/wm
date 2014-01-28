@@ -92,6 +92,9 @@ super + a
 super + shift + d
     $tools/pager.sh remove
 
+super + c
+    $base/controller.sh cleanup
+
 super + r
     $tools/pager.sh rename
 
