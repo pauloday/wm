@@ -113,6 +113,9 @@ XF86AudioRaiseVolume
 XF86AudioLowerVolume
     pamixer --decrease 10
 
+XF86AudioMute
+    pamixer --toggle-mute
+
 XF86MonBrightnessUp
     sudo $tools/brightness_change.sh screen up
 
