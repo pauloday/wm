@@ -60,7 +60,7 @@ new_desktop() {
 add_desktop() {
 	focused_name=$(bspc query -d focused -D)
 	focused_windows=$(bspc query -d focused -W)
-	if [ ! $($focused_name | get_simple_name)  && ! $focused_windows ]; then 
+	if [[ -z "$($focused_name | get_simple_name)"  && -z "$focused_windows" ]]; then 
 		rename_desktop $focused_name $name
 	else
 		new_desktop $name
