@@ -1,9 +1,10 @@
 #!/bin/bash
-### desktops.sh [list|add|new|remove|cleanup|rename newname] <desktop>
+### desktops.sh [list|add|new|remove|cleanup|swap|rename newname] <desktop>
 ### Control or query desktops
 ### For remove and rename, desktop can be either "n/name" or just "name"
 ### Add switches and executes autorun file, new simply adds
 ### Cleanup deletes all empty desks
+### Swap swaps the current desk with the given one, which can be a selector
 ### list prints information to stdout formatted like:
 ###	":[O|o|F|f] <desktop1> [...] <desktop2>"
 ### 	where a o means occupied, f means free, and a capital letter means focused
@@ -101,6 +102,13 @@ cleanup_desks() {
 	renumber_desks
 }
 
+## swap_desks desktop_sel
+## switches current desk with selected, renumbers desks
+swap_desks() {
+	bspc desktop -s $1
+	renumber_desks
+}
+
 ## rename_desktop name new
 ## Renames named desktop to n/new
 rename_desktop() {
@@ -128,6 +136,9 @@ case $1 in
 		;;
 	cleanup)
 		cleanup_desks
+		;;
+	swap)
+		swap_desks $name	
 		;;
 	rename)
 		new=$2

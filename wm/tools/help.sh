@@ -10,8 +10,12 @@ pidfile="/tmp/help_pid"
 if [ -f $pidfile ]; then
 	kill -9 $(cat $pidfile)
 	rm -rf $pidfile
-else
-	help_string="cmd+d: add desktop, cmd+shift+d: delete desktop, cmd+a: add autorun command, cmd+[0-9]: switch to desktop [0-9], cmd+shift+[0-9]: move window to desktop [0-9], cmd+tab: switch to last used desktop"
-	echo $help_string | dzen2 -y $(expr $screen_height / 3) -p -bg ${colors[grey]} &
+else	
+	help_file="$wm/help.txt"
+	events="onstart=uncollapse;key_Escape=exit:0;key_Return=exit:0"
+	lines=$(expr $(cat $help_file | wc -l) - 1)
+	font="Droid Sans Mono :size=12"
+	cat $help_file | sed "s/c1/${colors[brightblue]}/g" |\
+		dzen2 -p -y 0 -ta l -fn "$font" -l $lines -e "$events" &
 	echo $! > $pidfile
 fi

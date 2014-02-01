@@ -1,111 +1,105 @@
-#
-# bspwm hotkeys
-#
+##
+## window manager control
+##
 
+# logout
 super + alt + Escape
     bspc quit
 
+# close focused window
 super + shift + w
     bspc window -c
 
+# switch layout between: tiled, monocle
 super + t
     bspc desktop -l next
 
-super + b
-    bspc desktop -B
+# make all windows on desk equal area, or reset areas to default
+super + {_,shift} b
+    bspc desktop {-B,-E}
 
-super + {s,f}
+# make window (f)loating or full(s)creen 
+super + {f,s}
     bspc window -t {floating,fullscreen}
 
+# switch to last desk or window
 super + {grave,Tab}
     bspc {window,desktop} -f last
 
-super + apostrophe
+# cycle foreward or backward through windows
+super + {shift,ctrl} + grave
+    bspc window -f {older,newer}
+
+# cycle foreward or backward through desks
+super + {shift,ctrl} + Tab
+    bspc desktop -f {prev,next}
+
+# swap current and last window
+super + alt + grave
     bspc window -s last
 
-super + {o,i}
-    bspc control --record-history off; \
-    bspc window {older,newer} -f; \
-    bspc control --record-history on
+# swap current and last desktop
+super + alt + Tab
+    $base/controller.sh swap last 
 
-super + y
-    bspc window -w last.manual
-
-super + m
-    bspc window -s biggest
-
+# move focus or window
 super + {_,shift + }{h,j,k,l}
     bspc window -{f,s} {left,down,up,right}
 
-super + {_,shift + }c
-    bspc window -f {next,prev}
-
-super + {comma,period}
-    bspc desktop -C {backward,forward}
-
-super + bracket{left,right}
-    bspc desktop -f {prev,next}
-
-super + ctrl + {h,j,k,l}
-    bspc window -p {left,down,up,right}
-
-super + ctrl + {_,shift + }space
-    bspc {window -p cancel,desktop -c}
-
-super + alt + {h,j,k,l}
-    bspc window -e {left,down,up,right} push
-
-super + alt + shift + {h,j,k,l}
-    bspc window -e {right,up,down,left} pull
-
-super + ctrl + {1-9}
-    bspc window -r 0.{1-9}
-
+# switch window or focus to desk n
 super + {_,shift + }{1-9,0}
     $tools/switch_desks.sh {focus,window} {1-9,10}
 
+# focus follows click
 ~button1
     bspc pointer -g focus
 
-super + button{1-3}
-    bspc pointer -g {move,resize_side,resize_corner}
+# move, resize floating window
+super + {_,ctrl} + button1
+    bspc pointer -g {move,resize_corner}
 
+# make sure we don't grab the mouse when we shouldn't
 super + !button{1-3}
     bspc pointer -t %i %i
 
-#
-# wm independent hotkeys
-#
+# add or remove desktop
+super + {_, alt} + d
+    $tools/pager.sh {add,remove}
 
-super + Return
-    xterm
+# remove all empty desktops
+super + shift + d
+    $base/controller.sh cleanup
 
-super + space
-    ls -w 1 /usr/bin | $base/menu.sh | bash
-
-super + d
-    $tools/pager.sh add
-
+# append a line to some desktop's autorun file
 super + a
     $tools/add_autorun.sh
 
-super + shift + d
-    $tools/pager.sh remove
-
-super + c
-    $base/controller.sh cleanup
-
+# rename desktop
 super + r
     $tools/pager.sh rename
 
-super + a
-    $tools/add_autorun.sh
 
+##
+## utilities - non window manager management
+##
+
+# launch terminal
+super + Return
+    xterm
+
+# launch program
+super + space
+    ls -w 1 /usr/bin | $base/menu.sh | bash
+
+# display help
 F1
     $tools/help.sh
 
+# set up appearence
 super + shift + s
     $tools/setup.sh
+
+# audio, brightness adjustment
 
 XF86AudioRaiseVolume
     pamixer --increase 10
