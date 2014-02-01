@@ -3,7 +3,7 @@ Super is windows key or command key
 ^fg(c1)  Toggle help:                  F1
 ^fg(  )  Logout:                       super + alt + escape
 ^fg(c1)  Close focused window:         super + shift + w
-^fg(  )  Switch desktop layout:        super + t
+^fg(  )  Switch desktop layout:        super + l
 ^fg(c1)  Equalize window area:         super + b
 ^fg(  )  Reset window area:            super + shift + b
 ^fg(c1)  Make window floating:         super + f
@@ -30,3 +30,4 @@ Super is windows key or command key
 ^fg(  )  Launch terminal:              super + return
 ^fg(c1)  Launch program:               super + space
 ^fg(  )  Set up window and edge gaps:  super + shift + s
+^fg(c1)  Toggle system tray:           super + t
