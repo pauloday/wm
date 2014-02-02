@@ -13,7 +13,7 @@ if [ -f $pidfile ]; then
 	exit
 fi
 help_file="$wm/help.txt"
-events="onstart=uncollapse;key_Escape=exit:0;key_Return=exit:0"
+events="onstart=uncollapse"
 lines=$(expr $(cat $help_file | wc -l) - 1)
 font="Droid Sans Mono :size=12"
 cat $help_file | sed "s/c1/${colors[brightblue]}/g" |\
