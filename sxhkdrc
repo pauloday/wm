@@ -11,7 +11,7 @@ super + shift + w
     bspc window -c
 
 # switch layout between: tiled, monocle
-super + l
+super + t
     bspc desktop -l next
 
 # make all windows on desk equal area, or reset areas to default
@@ -92,7 +92,7 @@ super + space
     ls -w 1 /usr/bin | $base/menu.sh | bash
 
 # toggle system tray
-super + t
+super + shift + t
     $tools/tray.sh
 
 # display help
