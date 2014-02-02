@@ -103,6 +103,10 @@ F1
 super + shift + s
     $tools/setup.sh
 
+# log activity
+super + shift + r
+    $tools/log.sh ~/log
+
 # audio, brightness adjustment
 
 XF86AudioRaiseVolume

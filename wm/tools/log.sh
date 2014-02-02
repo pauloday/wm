@@ -1,8 +1,8 @@
 #!/bin/bash
-### log.sh
-### Asks the user for a line, and adds that line to a log file at ~/log
+### log.sh file
+### Asks the user for a line, adds that line with timestamp to file
 
-log_message="Write line to log file:"
-log_line=$($base/menu.sh -noinput -y 200 -p "$log_message")
 now=$(date +"%D %_I:%M %p")
+log_message="Write line for $now to $1"
+log_line=$($base/menu.sh -noinput -y 200 -p "$log_message")
 echo "$now: $log_line" >> ~/log
