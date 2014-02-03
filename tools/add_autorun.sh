@@ -2,12 +2,12 @@
 ### add_autorun.sh
 ### adds a line to an autorun file
 
-name=$(ls -w 1 $wm/autorun_files | $base/menu.sh -p "Desktop:")
+name=$(ls -w 1 $wm/autorun_files | $tools/menu.sh -p "Desktop:")
 if [ ! "$name" ]; then
 	exit
 fi
 
-line=$(ls -w 1 /usr/bin | $base/menu.sh -p "Command:")
+line=$(ls -w 1 /usr/bin | $tools/menu.sh -p "Command:")
 file="$wm/autorun_files/$name"
 if [ ! -a $file ]; then
 	echo "#!/bin/bash" > $file

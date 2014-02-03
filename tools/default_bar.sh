@@ -24,7 +24,7 @@ colorize_string() {
 
 ## colorize_desktop_string <string>
 ## formats <string> to be colored for dzen2
-## <string> comes from running "$base/controller.sh list"
+## <string> comes from running "$tools/controller.sh list"
 colorize_desktop_string() {
 	echo $1 |
 	sed "s/:O/^fg(${colors[bg]})^bg(${colors[fg]})/g" |
@@ -71,7 +71,7 @@ info_width=$(expr $screen_width - $desktops_width - $stats_width)
 
 stats_x=$(expr $screen_width - $stats_width)
 
-$base/controller.sh list | colorize_desktop_strings |
+$tools/controller.sh list | colorize_desktop_strings |
 	dzen2 -y $screen_height -ta l -w $desktops_width -x 0 &
 $tools/piped_bar.sh $info_pipe -y $screen_height -ta l -w $info_width -x $desktops_width &
 output_stats | dzen2 -y $screen_height -ta r -w $stats_width -x $stats_x

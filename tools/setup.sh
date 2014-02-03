@@ -5,7 +5,7 @@
 
 exit_if() {
 	if [ "$?" = "1" ]; then
-		$base/controller.sh remove Setup
+		$tools/controller.sh remove Setup
 	        exit
 	fi
 }
@@ -53,7 +53,7 @@ change_inst="Use up and down to"
 bail_inst="Press Enter when done or ESC to exit setup"
 interactive_message="or i to set interactivly:"
 
-window_gap=$($base/menu.sh -noinput -p "Window gap $interactive_message")	
+window_gap=$($tools/menu.sh -noinput -p "Window gap $interactive_message")	
 exit_if 1
 if [ "$window_gap" = "i" ]; then
 	echo "$change_inst set the window gap. $bail_inst" | change_setting window_gap 0 1
@@ -62,7 +62,7 @@ if [ "$window_gap" = "i" ]; then
 fi
 bspc config window_gap $window_gap
 
-top_gap=$($base/menu.sh -noinput -p "Top gap $interactive_message")
+top_gap=$($tools/menu.sh -noinput -p "Top gap $interactive_message")
 exit_if 1
 if [ "$top_gap" = "i" ]; then
 	echo "$change_inst set the top gap. $bail_inst" | change_setting top_padding 0 1
@@ -71,7 +71,7 @@ if [ "$top_gap" = "i" ]; then
 fi
 bspc config top_padding $top_gap
 	
-bottom_gap=$($base/menu.sh -noinput -p "Bottom gap $interactive_message")
+bottom_gap=$($tools/menu.sh -noinput -p "Bottom gap $interactive_message")
 exit_if 1
 if [ "$bottom_gap" = "i" ]; then
 	echo "$change_inst set the bottom gap. $bail_inst" | change_setting bottom_padding 0 1

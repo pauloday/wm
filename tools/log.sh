@@ -4,5 +4,5 @@
 
 now=$(date +"%D %_I:%M %p")
 log_message="Write line for $now to $1"
-log_line=$($base/menu.sh -noinput -y 200 -p "$log_message")
+log_line=$($tools/menu.sh -noinput -y 200 -p "$log_message")
 echo "$now: $log_line" >> ~/log

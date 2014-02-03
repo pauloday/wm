@@ -34,7 +34,7 @@ windows() {
 
 if [ "$2" -gt "$num_desks" ]; then
 	if [ "$(name $last_desk)" -o "$(windows $last_desk)" ]; then
-		name=$($base/controller.sh new)
+		name=$($tools/controller.sh new)
 		switch $1 "$name"
 		exit
 	fi
@@ -46,6 +46,6 @@ switch $1 "^$2"
 
 if [ ! "$(name $last_desk)" -a ! "$(windows $last_desk)" ]; then
 	if [ ! "$(bspc query -d focused -D)" = "$last_desk" ]; then
-		$base/controller.sh remove $last_desk
+		$tools/controller.sh remove $last_desk
 	fi
 fi

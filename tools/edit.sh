@@ -8,7 +8,7 @@ source $wm/style.sh
 
 file=$1
 if [ ! "$1" ]; then
-	file=$(echo "" | $base/menu.sh -sb ${colors[bg]})
+	file=$(echo "" | $tools/menu.sh -sb ${colors[bg]})
 fi
 
-$base/menu.sh >> $wm/autorun_files
+$tools/menu.sh >> $wm/autorun_files
