@@ -31,4 +31,3 @@ Super is windows key or command key
 ^fg(c1)  Launch program:               super + space
 ^fg(  )  Set up window and edge gaps:  super + shift + s
 ^fg(c1)  Toggle system tray:           super + t
-^fg(  )  Record line to log:           super + shift + r

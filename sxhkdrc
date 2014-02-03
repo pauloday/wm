@@ -40,7 +40,7 @@ super + alt + grave
 
 # swap current and last desktop
 super + alt + Tab
-    $base/controller.sh swap last 
+    $tools/controller.sh swap last 
 
 # move focus or window
 super + {_,shift + }{h,j,k,l}
@@ -68,7 +68,7 @@ super + {_, alt} + d
 
 # remove all empty desktops
 super + shift + d
-    $base/controller.sh cleanup
+    $tools/controller.sh cleanup
 
 # append a line to some desktop's autorun file
 super + a
@@ -102,10 +102,6 @@ F1
 # set up appearence
 super + shift + s
     $tools/setup.sh
-
-# log activity
-super + shift + r
-    $tools/log.sh ~/log
 
 # audio, brightness adjustment
 
