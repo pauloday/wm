@@ -10,6 +10,10 @@ super + alt + Escape
 super + shift + w
     bspc window -c
 
+# display window title bar
+super + w
+    $tools/toggle_window_title.sh
+
 # switch layout between: tiled, monocle
 super + t
     bspc desktop -l next

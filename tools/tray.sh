@@ -2,8 +2,6 @@
 ### tray.sh
 ### Toggles stalonetray
 
-source $wm/style.sh
-
 pid_file="/tmp/trayer_pid"
 if [ -f $pid_file ]; then
 	kill -9 $(cat $pid_file)
