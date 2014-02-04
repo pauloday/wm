@@ -1,34 +1,34 @@
-DIR is either:  h (left), j (down), k (up), or l (left)
+DIR is either:  h (left), j (down), k (up), or l (right)
 Super is windows key or command key
-^fg(c1)  Toggle help:                  F1
-^fg(  )  Logout:                       super + alt + escape
-^fg(c1)  Close focused window:         super + shift + w
-^fg(  )  Switch desktop layout:        super + l
-^fg(c1)  Equalize window area:         super + b
-^fg(  )  Reset window area:            super + shift + b
-^fg(c1)  Make window floating:         super + f
-^fg(  )  Make window fullscreen:       super + s
-^fg(c1)  Switch to last desktop:       super + tab
-^fg(  )  Switch to last window:        super + `
-^fg(c1)  Desktop cycle foreward:       super + ctrl + tab
-^fg(  )  Desktop cycle backward:       super + shift + tab
-^fg(c1)  Window cycle foreward:        super + ctrl + `
-^fg(  )  Window cycle backward:        super + shift + `
-^fg(c1)  Swap with last desktop:       super + alt + tab
-^fg(  )  Swap with last window:        super + alt + `
-^fg(c1)  Move window focus:            super + DIR
-^fg(  )  Move window:                  super + shift + DIR 
-^fg(c1)  Switch to desktop 0-9:        super + (0-9)
-^fg(  )  Move window to desktop 0-9:   super + shift + (0-9)
-^fg(c1)  Move floating window:         super + drag
-^fg(  )  Resize floating window:       super + ctrl + drag
-^fg(c1)  Add desktop:                  super + d
-^fg(  )  Remove desktop:               super + alt + d
-^fg(c1)  Remove all empty desktops:    super + shift +d
-^fg(  )  Rename desktop:               super + r
-^fg(c1)  Append line to autorun file:  super + a
-^fg(  )  Launch terminal:              super + return
-^fg(c1)  Launch program:               super + space
-^fg(  )  Set up window and edge gaps:  super + shift + s
-^fg(c1)  Toggle system tray:           super + t
-^fg(  )  Toggle window title:          super + w
+  Toggle help:                  F1
+  Logout:                       super + alt + escape
+  Close focused window:         super + shift + w
+  Switch desktop layout:        super + l
+  Equalize window area:         super + b
+  Reset window area:            super + shift + b
+  Make window floating:         super + f
+  Make window fullscreen:       super + s
+  Switch to last desktop:       super + tab
+  Switch to last window:        super + `
+  Desktop cycle foreward:       super + ctrl + tab
+  Desktop cycle backward:       super + shift + tab
+  Window cycle foreward:        super + ctrl + `
+  Window cycle backward:        super + shift + `
+  Swap with last desktop:       super + alt + tab
+  Swap with last window:        super + alt + `
+  Move window focus:            super + DIR
+  Move window:                  super + shift + DIR 
+  Switch to desktop 0-9:        super + (0-9)
+  Move window to desktop 0-9:   super + shift + (0-9)
+  Move floating window:         super + drag
+  Resize floating window:       super + ctrl + drag
+  Add desktop:                  super + d
+  Remove desktop:               super + alt + d
+  Remove all empty desktops:    super + shift +d
+  Rename desktop:               super + r
+  Append line to autorun file:  super + a
+  Launch terminal:              super + return
+  Launch program:               super + space
+  Set up window and edge gaps:  super + shift + s
+  Toggle system tray:           super + t
+  Toggle window title:          super + w
