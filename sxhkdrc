@@ -93,7 +93,7 @@ super + Return
 
 # launch program
 super + space
-    ls -w 1 /usr/bin | $base/menu.sh | bash
+    ls -w 1 /usr/bin | $tools/menu.sh | bash
 
 # toggle system tray
 super + shift + t
