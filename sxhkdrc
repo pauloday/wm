@@ -101,7 +101,7 @@ super + shift + t
 
 # display help
 F1
-    $tools/help.sh
+    $tools/display_file.sh $wm/help.txt
 
 # set up appearence
 super + shift + s

@@ -2,11 +2,11 @@
 ### tray.sh
 ### Toggles stalonetray
 
-pid_file="/tmp/trayer_pid"
-if [ -f $pid_file ]; then
-	kill -9 $(cat $pid_file)
-	rm -rf $pid_file
+pidfile="/tmp/trayer_pid"
+if [ -f $pidfile ]; then
+	kill -9 $(cat $pidfile)
+	rm -rf $pidfile
 	exit
 fi
 trayer --edge top --widthtype request --heighttype request --expand true &
-echo $! > $pid_file
+echo $! > $pidfile
