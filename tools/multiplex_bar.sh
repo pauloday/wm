@@ -1,11 +1,16 @@
 #!/bin/bash
-### multiplex_bar.sh pipes_dir sep [dzen2_opts]
-### Multiplexes the last lines from each file in pipes_dir
+### multiplex_bar.sh [barname sep [dzen2_opts]] | barname/section_name]
+### Either creates a multiplexed bar, or adds a partition to that bar
 ### Be careful that the information length does not exceed the bar length
-### The bar must be updated manually by calling multiplex_bar pipes_dir
+### To add a section showing the output of "info" to bar "bar" call this like
+###	info | multiplex_bar.sh bar/n   (note that this command will not exit)
+### where n is the section named, which will be used for sorting.
+### Sections are displayed alphanumerically sorted left to right
+### The bar updates whenever a section changes
 
-dir=$1
+dir="/tmp/multiplex_$1"
 sep=$2
+sep_file="$dir/.sep"
 shift; shift
 dzen_pipe="$dir/.dzen"
 
@@ -24,9 +29,18 @@ gather_strings() {
 }
 
 if [ ! -f $dzen_pipe ]; then
-	touch $dzen_pipe
-	trap "rm -f $dzen_pipe" EXIT
-	gather_strings $dir $sep > $dzen_pipe
+	mkdir $dir
+	touch $sep_file $dzen_pipe
+	trap "rm -rf $dir $dzen_pipe $sep_file" EXIT
+	echo $sep > $sep_file
 	tailf $dzen_pipe | dzen2 $@
+else
+	section_file="$dir/$sep"
+	sep=$(cat $sep_file)
+	touch $section_file
+	while read line; do
+		rm -f $section_file
+		echo $line > $section_file
+		echo $(gather_strings $dir $sep) > $dzen_pipe
+	done
 fi
-gather_strings $dir $sep > $dzen_pipe
