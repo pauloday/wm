@@ -9,9 +9,8 @@
 ### The bar updates whenever a section changes
 
 dir="/tmp/multiplex_$1"
-sep=$2
+shift
 sep_file="$dir/.sep"
-shift; shift
 dzen_pipe="$dir/.dzen"
 
 ## gather_strings dir sep
@@ -28,18 +27,20 @@ gather_strings() {
 	echo $string
 }
 
-if [ ! -f $dzen_pipe ]; then
+if [ ! -d "$dir" ]; then
+	sep=$1
+	shift
 	mkdir $dir
-	touch $sep_file $dzen_pipe
+	touch $dzen_pipe
 	trap "rm -rf $dir $dzen_pipe $sep_file" EXIT
 	echo $sep > $sep_file
 	tailf $dzen_pipe | dzen2 $@
 else
-	section_file="$dir/$sep"
+	section_file="$dir/$1"
+	shift
 	sep=$(cat $sep_file)
 	touch $section_file
 	while read line; do
-		rm -f $section_file
 		echo $line > $section_file
 		echo $(gather_strings $dir $sep) > $dzen_pipe
 	done
