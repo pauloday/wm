@@ -31,10 +31,10 @@ if [ ! -d "$dir" ]; then
 	sep=$1
 	shift
 	mkdir $dir
-	touch $dzen_pipe
+	mkfifo $dzen_pipe
 	trap "rm -rf $dir $dzen_pipe $sep_file" EXIT
 	echo $sep > $sep_file
-	tailf $dzen_pipe | dzen2 $@
+	tail -f $dzen_pipe | dzen2 $@
 else
 	section_file="$dir/$1"
 	shift
