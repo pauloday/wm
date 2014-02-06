@@ -27,15 +27,7 @@ gather_strings() {
 	echo $string
 }
 
-if [ ! -d "$dir" ]; then
-	sep=$1
-	shift
-	mkdir $dir
-	mkfifo $dzen_pipe
-	trap "rm -rf $dir $dzen_pipe $sep_file" EXIT
-	echo $sep > $sep_file
-	tail -f $dzen_pipe | dzen2 $@
-else
+if [ -d "$dir" ]; then
 	section_file="$dir/$1"
 	shift
 	sep=$(cat $sep_file)
@@ -44,4 +36,12 @@ else
 		echo $line > $section_file
 		echo $(gather_strings $dir $sep) > $dzen_pipe
 	done
+else
+	sep=$1
+	shift
+	mkdir $dir
+	trap "rm -rf $dir" EXIT
+	mkfifo $dzen_pipe
+	echo $sep > $sep_file
+	tail -f $dzen_pipe | dzen2 $@
 fi

@@ -40,38 +40,20 @@ colorize_desktop_strings() {
 	done
 }
 
-output_stats() {
+output_time() {
 	while true; do
-		time=$(date +"%D %_I:%M %p")
-		battery=$(acpi -b | awk '{print $4}' | tr -d ",%")
-		if [ "$battery" -lt 65 ]; then
-			battery=$(colorize_fg "$battery%" ${colors[yellow]})
-		elif [ "$battery" -lt 20 ]; then
-			battery=$(colorize_fg "$battery%" ${colors[red]})
-		elif [ "$battery" -lt 6 ]; then
-			battery=$(colorize_string "$battery%" ${colors[bg]} ${colors[red]})
-		else
-			battery="$battery%"
-		fi
-		separator=$(colorize_fg "|" "${colors[grey]}")
-		wireless=$(cat /proc/net/wireless | tail -1 | cut -f4 | tr -d.)
-		btc=$(curl --connect-timeout 10 http://data.mtgox.com/api/2/BTCUSD/money/ticker |\
-			grep -Po '"display":"\$[0-9]*\.[0-9][0-9]"' | cut -d: -f2 | tr -d '"' | head -1)
-		echo "$wireless $separator $battery $separator $time"
-		sleep 20
+		echo $(date +"%D %_I:%M %p")
+		sleep 10
 	done
 }
 
 ## main
 info_pipe="/tmp/info_pipe"
 
-desktops_width=300
-stats_width=300
-info_width=$(expr $screen_width - $desktops_width - $stats_width)
+right_width=300
+left_width=$(expr $screen_width - $right_width) 
 
-stats_x=$(expr $screen_width - $stats_width)
-
-$tools/controller.sh list | colorize_desktop_strings |
-	dzen2 -y $screen_height -ta l -w $desktops_width -x 0 &
-$tools/piped_bar.sh $info_pipe -y $screen_height -ta l -w $info_width -x $desktops_width &
-output_stats | dzen2 -y $screen_height -ta r -w $stats_width -x $stats_x
+$tools/multiplex_bar.sh left_bar "	" -ta l -w $left_width &
+$tools/multiplex_bar.sh right_bar "|" -ta r -w $right_width -x $left_width &
+$tools/controller.sh list | colorize_desktop_strings | $tools/multiplex_bar.sh left_bar 1 &
+output_time | $tools/multiplex_bar.sh right_bar 1
