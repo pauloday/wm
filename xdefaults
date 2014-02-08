@@ -9,7 +9,7 @@ dzen2*background: #666666
 
 !BLACK
 *color0:               #666666
-*color8:               #666666
+*color8:               #363636
 !RED
 *color1:               #993366
 *color9:               #660033
@@ -30,4 +30,4 @@ dzen2*background: #666666
 *color14:              #006633
 !WHITE
 *color7:               #999999
-*color15:              #FFFFFF
+*color15:              #eeeeee
