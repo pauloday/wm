@@ -16,6 +16,7 @@ shift
 ## gather_strings dir
 ## multiplexes the last line of each file in dir
 gather_strings() {
+	string=" "
 	for file in $1/* ; do
 		string="$string $(cat $file | tail -1)"
 	done 
@@ -50,5 +51,6 @@ else
 	mkfifo $dzen_pipe
 	touch $dir/0
 	trap "kill 0; rm -rf $dir" EXIT
+	echo dz:$@
 	tail -f $dzen_pipe | dzen2 $@
 fi
