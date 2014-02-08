@@ -45,9 +45,9 @@ output_stats() {
 		time=$(date +"%D %_I:%M %p")
 		battery=$(acpi -b | awk '{print $4}' | tr -d ",%")
 		if [ "$battery" -lt 65 ]; then
-			battery=$(colorize_fg "$battery%" ${colors[yellow]})
+			battery=$(colorize_bg "$battery%" ${colors[yellow]})
 		elif [ "$battery" -lt 20 ]; then
-			battery=$(colorize_fg "$battery%" ${colors[red]})
+			battery=$(colorize_bg "$battery%" ${colors[red]})
 		elif [ "$battery" -lt 6 ]; then
 			battery=$(colorize_string "$battery%" ${colors[bg]} ${colors[red]})
 		else
