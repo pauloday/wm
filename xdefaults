@@ -1,33 +1,33 @@
 xterm*faceName: PragmataPro:pixelsize=14
 dzen2*font: Roboto Slab:size=12
-dzen2*foreground: #CCCCCC
-dzen2*background: #666666
+dzen2*foreground: #666666
+dzen2*background: #eeeeee
 
-*background: 	    #CCCCCC
+*background: 	    #eeeeee
 *foreground:  	    #666666
 
 
 !BLACK
-*color0:               #666666
-*color8:               #363636
+*color0:               #555555
+*color8:               #989898
 !RED
-*color1:               #993366
-*color9:               #660033
+*color1:               #ff4739
+*color9:               #ff7d73
 !GREEN
-*color2:               #669933
-*color10:              #336600
+*color2:               #09ef31
+*color10:              #71e685
 !YELLOW
-*color3:               #996633
-*color11:              #663300
+*color3:               #ff891b
+*color11:              #ffb774
 !BLUE
-*color4:               #336699
-*color12:              #003366
+*color4:               #1760b3
+*color12:              #72a8e4
 !MAGENTA
-*color5:               #663399
-*color13:              #330066
+*color5:               #f62790
+*color13:              #f274b4
 !CYAN
-*color6:               #339966
-*color14:              #006633
+*color6:               #00bed9
+*color14:              #59ebff
 !WHITE
 *color7:               #999999
 *color15:              #eeeeee

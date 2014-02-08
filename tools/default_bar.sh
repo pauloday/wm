@@ -27,10 +27,10 @@ colorize_string() {
 ## <string> comes from running "$tools/controller.sh list"
 colorize_desktop_string() {
 	echo $1 |
-	sed "s/:O/^fg(${colors[bg]})^bg(${colors[fg]})/g" |
-	sed "s/:F/^fg(${colors[grey]})^bg(${colors[fg]})/" |
-	sed "s/:f/^fg(${colors[grey]})^bg(${colors[bg]})/g" |
-	sed "s/:o/^fg(${colors[fg]})^bg(${colors[bg]})/g" |
+	sed "s/:O/^fg(${colors[bg]})^bg(${colors[grey]})/g" |
+	sed "s/:F/^fg(${colors[bg]})^bg(${colors[black]})/g" |
+	sed "s/:f/^fg(${colors[black]})^bg(${colors[bg]})/g" |
+	sed "s/:o/^fg(${colors[grey]})^bg(${colors[bg]})/g" |
 	sed 's/$/ /'
 }
 
@@ -54,7 +54,7 @@ output_stats() {
 			battery="$battery%"
 		fi
 		separator=$(colorize_fg "|" "${colors[grey]}")
-		wireless=$(cat /proc/net/wireless | tail -1 | cut -f4 | tr -d.)
+		wireless=$(cat /proc/net/wireless | tail -1 | cut -f4 | tr -d ".")
 		btc=$(curl --connect-timeout 10 http://data.mtgox.com/api/2/BTCUSD/money/ticker |\
 			grep -Po '"display":"\$[0-9]*\.[0-9][0-9]"' | cut -d: -f2 | tr -d '"' | head -1)
 		echo "$wireless $separator $battery $separator $time"
