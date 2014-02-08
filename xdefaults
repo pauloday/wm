@@ -1,9 +1,9 @@
 xterm*faceName: PragmataPro:pixelsize=14
 dzen2*font: Roboto Slab:size=12
 dzen2*foreground: #666666
-dzen2*background: #eeeeee
+dzen2*background: #d5d5d5
 
-*background: 	    #eeeeee
+*background: 	    #d5d5d5
 *foreground:  	    #666666
 
 

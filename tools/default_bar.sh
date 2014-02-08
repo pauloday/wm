@@ -27,10 +27,10 @@ colorize_string() {
 ## <string> comes from running "$tools/controller.sh list"
 colorize_desktop_string() {
 	echo $1 |
-	sed "s/:O/^fg(${colors[bg]})^bg(${colors[grey]})/g" |
-	sed "s/:F/^fg(${colors[bg]})^bg(${colors[black]})/g" |
-	sed "s/:f/^fg(${colors[black]})^bg(${colors[bg]})/g" |
-	sed "s/:o/^fg(${colors[grey]})^bg(${colors[bg]})/g" |
+	sed "s/:O/^fg(${colors[bg]})^bg(${colors[black]})/g" |
+	sed "s/:F/^fg(${colors[bg]})^bg(${colors[grey]})/g" |
+	sed "s/:f/^fg(${colors[grey]})^bg(${colors[bg]})/g" |
+	sed "s/:o/^fg(${colors[black]})^bg(${colors[bg]})/g" |
 	sed 's/$/ /'
 }
 
