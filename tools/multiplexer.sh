@@ -51,6 +51,5 @@ else
 	mkfifo $dzen_pipe
 	touch $dir/0
 	trap "kill 0; rm -rf $dir" EXIT
-	echo dz:$@
 	tail -f $dzen_pipe | dzen2 $@
 fi
