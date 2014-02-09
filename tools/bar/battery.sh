@@ -11,19 +11,19 @@ while true; do
 	style="^i($icons/bat_full_02.xbm)$battery"
 	case "$charging" in
 		Charging)
-			battery="^i($icons/ac_01.xbm)$battery"
+			style="^i($icons/ac_01.xbm)"
 			;;
 		Unknown)
-			battery="^i($icons/ac_01.xbm)$battery"
+			style="^i($icons/ac_01.xbm)"
 			;;
 		Discharging)
 			if [ "$battery" -lt "50" ]; then
-				style="^fg(${colors[yellow]})^i($icons/bat_low_02.xbm) "
+				style="^fg(${colors[yellow]})^i($icons/bat_low_02.xbm)"
 			elif [ "$battery" -lt "15" ]; then
-				style="^fg(${colors[red]})^ i($icons/bat_empty_02.xbm) "
+				style="^fg(${colors[red]})^ i($icons/bat_empty_02.xbm)"
 			fi
 			;;
 	esac
-	echo "^fg()$style$battery% ^fg(${colors[grey]})|"
+	echo "^fg()$style $battery% ^fg(${colors[grey]})|"
 	sleep $1
 done

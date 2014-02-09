@@ -3,31 +3,31 @@ dzen2*font: Roboto Slab:size=12
 dzen2*foreground: #666666
 dzen2*background: #d5d5d5
 
-*background:        #d5d5d5
+*background:        #bababa
 *foreground:        #666666
 
 
 !BLACK
-*color0:               #555555
-*color8:               #989898
+*color0:               #444444
+*color8:               #898989
 !RED
-*color1:               #ff4739
-*color9:               #ff7d73
+*color1:               #ed332e
+*color9:               #ff5652
 !GREEN
-*color2:               #09ef31
-*color10:              #71e685
+*color2:               #6acb00
+*color10:              #b5f86c
 !YELLOW
-*color3:               #ff891b
-*color11:              #ffb774
+*color3:               #e89b00
+*color11:              #fcd16e
 !BLUE
 *color4:               #1760b3
-*color12:              #72a8e4
+*color12:              #3486e2
 !MAGENTA
-*color5:               #f62790
-*color13:              #f274b4
+*color5:               #9834ee
+*color13:              #bb72f9
 !CYAN
-*color6:               #00bed9
-*color14:              #59ebff
+*color6:               #00a4e2
+*color14:              #49beea
 !WHITE
-*color7:               #999999
-*color15:              #eeeeee
+*color7:               #e5e5e5
+*color15:              #f5f5f5
