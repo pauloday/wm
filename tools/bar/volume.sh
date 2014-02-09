@@ -13,4 +13,4 @@ else
 	style="^fg(${colors[green]})"
 fi
 
-echo "$style$volume%"
+echo "$style$volume% ^fg(${colors[grey]})|"
