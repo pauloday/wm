@@ -109,14 +109,14 @@ super + shift + s
 
 # audio, brightness adjustment
 
-XF86AudioRaiseVolume
-    pamixer --increase 10
+{shift,_} + XF86AudioRaiseVolume
+    $tools/volume_change.sh {1,10}
 
-XF86AudioLowerVolume
-    pamixer --decrease 10
+{shift,_} + XF86AudioLowerVolume
+    $tools/volume_change.sh {-1,-10}
 
 XF86AudioMute
-    pamixer --toggle-mute
+    $tools/volume_change.sh 0
 
 XF86MonBrightnessUp
     sudo $tools/brightness_change.sh screen up
