@@ -4,24 +4,26 @@
 
 source $wm/style.sh
 
+icons="$tools/bar/icons"
 while true; do
 	battery=$(acpi -b | cut -d" " -f4 | tr -d "%,")
 	charging=$(acpi -b | cut -d" " -f3 | tr -d ',')
+	style="^i($icons/bat_full_02.xbm)$battery"
 	case "$charging" in
 		Charging)
-			battery="^fg(${colors[green]})$battery"
+			battery="^i($icons/ac_01.xbm)$battery"
 			;;
 		Unknown)
-			battery="^fg(${colors[green]})$battery"
+			battery="^i($icons/ac_01.xbm)$battery"
 			;;
 		Discharging)
 			if [ "$battery" -lt "50" ]; then
-				battery="^fg(${colors[yellow]})$battery"
+				style="^fg(${colors[yellow]})^i($icons/bat_low_02.xbm) "
 			elif [ "$battery" -lt "15" ]; then
-				battery="^fg(${colors[red]})$battery"
+				style="^fg(${colors[red]})^ i($icons/bat_empty_02.xbm) "
 			fi
 			;;
 	esac
-	echo "^fg()$battery% ^fg(${colors[grey]})|"
+	echo "^fg()$style$battery% ^fg(${colors[grey]})|"
 	sleep $1
 done

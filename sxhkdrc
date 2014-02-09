@@ -51,8 +51,12 @@ super + {_,shift + }{h,j,k,l}
     bspc window -{f,s} {left,down,up,right}
 
 # switch window or focus to desk n
-super + {_,shift + }{1-9,0}
+super + {_,shift} + {1-9,0}
     $tools/switch_desks.sh {focus,window} {1-9,10}
+
+# swap desktop with n
+super + ctrl + {1-9,0}
+    $tools/controller.sh swap {1-9,10}
 
 # focus follows click
 ~button1
