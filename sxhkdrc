@@ -47,7 +47,7 @@ super + alt + Tab
     $tools/controller.sh swap last 
 
 # move focus or window
-super + {_,shift + }{h,j,k,l}
+super + {_,shift} + {h,j,k,l}
     bspc window -{f,s} {left,down,up,right}
 
 # switch window or focus to desk n
@@ -114,10 +114,10 @@ super + shift + s
 # audio, brightness adjustment
 
 {shift,_} + XF86AudioRaiseVolume
-    $tools/volume_change.sh {1,10}
+    $tools/volume_change.sh {1,5}
 
 {shift,_} + XF86AudioLowerVolume
-    $tools/volume_change.sh {-1,-10}
+    $tools/volume_change.sh {-1,-5}
 
 XF86AudioMute
     $tools/volume_change.sh 0
