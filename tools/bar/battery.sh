@@ -8,7 +8,7 @@ icons="$tools/bar/icons"
 while true; do
 	battery=$(acpi -b | cut -d" " -f4 | tr -d "%,")
 	charging=$(acpi -b | cut -d" " -f3 | tr -d ',')
-	style="^i($icons/bat_full_02.xbm)$battery"
+	style="^i($icons/bat_full_02.xbm)"
 	case "$charging" in
 		Charging)
 			style="^i($icons/ac_01.xbm)"

@@ -3,8 +3,8 @@
 ### Reads a line from controller.sh list and styles it for dzen
 
 source $wm/style.sh
-occupied_color=${colors[black]}
-free_color=${colors[grey]}
+occupied_color=${colors[fg]}
+free_color=${colors[brightcyan]}
 bg_color=${colors[bg]}
 
 while read line; do

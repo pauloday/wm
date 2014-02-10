@@ -44,8 +44,8 @@
 #define S_green         #859900
 #define S_base03        #002b36
 
-XTerm*faceName: termsyn:size=14
-dzen2*font: Roboto Slab:size=12
+XTerm*faceName: termsyn
+dzen2*font: Roboto Condensed:size=12:bold
 dzen2*background: S_base3
 dzen2*foreground: S_base00
 
