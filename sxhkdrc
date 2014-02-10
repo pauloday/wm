@@ -104,7 +104,7 @@ super + shift + t
     $tools/tray.sh
 
 # display help
-F1
+super + F1
     $tools/display_file.sh $wm/help.txt
 
 # set up appearence

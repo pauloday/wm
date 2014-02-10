@@ -13,5 +13,5 @@ while read line; do
 	sed "s/:F/^fg($bg_color)^bg($free_color)/g" |
 	sed "s/:f/^fg($free_color)^bg($bg_color)/g" |
 	sed "s/:o/^fg($occupied_color)^bg($bg_color)/g" |
-	sed 's/$/ /'
+	sed "s/$/█/"
 done

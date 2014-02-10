@@ -1,6 +1,6 @@
 DIR is either:  h (left), j (down), k (up), or l (right)
 Super is windows key or command key
-  Toggle help:                  F1
+  Toggle help:                  super + F1
   Logout:                       super + alt + escape
   Close focused window:         super + shift + w
   Switch desktop layout:        super + l
