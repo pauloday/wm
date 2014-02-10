@@ -44,7 +44,7 @@
 #define S_green         #859900
 #define S_base03        #002b36
 
-xterm*faceName: PragmataPro:pixelsize=14
+XTerm*faceName: termsyn:size=14
 dzen2*font: Roboto Slab:size=12
 dzen2*background: S_base3
 dzen2*foreground: S_base00
