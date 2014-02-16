@@ -20,6 +20,7 @@ Super is windows key or command key
   Move window:                  super + shift + DIR 
   Switch to desktop 0-9:        super + (0-9)
   Move window to desktop 0-9:   super + shift + (0-9)
+  Swap current and last desk:   super + ctrl + (0-9)
   Move floating window:         super + drag
   Resize floating window:       super + ctrl + drag
   Add desktop:                  super + d
