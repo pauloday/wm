@@ -52,6 +52,7 @@ new_desktop() {
 	echo $name
 }
 
+# TODO: make saved desks refer to a script only - the desktop creation is included in the script
 ## add_desktop name
 ## adds a desktop called n/name, where n is the super + n shortcut
 ## if the focused desktop is empty and unnamed, it is replaced with n/name
