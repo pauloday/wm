@@ -38,11 +38,11 @@ if [ "$2" -gt "$num_desks" ]; then
 		switch $1 "$name"
 		exit
 	fi
-	switch $1 "^$num_desks"
+	switch $1 "$last_desk"
 	exit
 fi
 
-switch $1 "$2"
+switch $1 "^$2"
 
 if [ ! "$(name $last_desk)" -a ! "$(windows $last_desk)" ]; then
 	if [ ! "$(bspc query -d focused -D)" = "$last_desk" ]; then
