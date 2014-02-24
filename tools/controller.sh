@@ -2,7 +2,7 @@
 ### desktops.sh [list|add|new|remove|cleanup|swap|rename newname] <desktop>
 ### Control or query desktops
 ### For remove and rename, desktop can be either "n/name" or just "name"
-### Add switches and executes autorun file, new simply adds
+### Add switches and executes init file, new simply adds
 ### Cleanup deletes all empty desks
 ### Swap swaps the current desk with the given one, which can be a selector
 ### list prints information to stdout formatted like:
@@ -67,7 +67,7 @@ add_desktop() {
 		new_desktop $name
 		bspc desktop -f $name
 	fi
-	$wm/autorun_files/$1
+	$wm/init_files/$1
 }
 
 ## renumber_desks

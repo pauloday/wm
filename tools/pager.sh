@@ -6,7 +6,7 @@ mode=$1
 
 case $mode in
 	add)
-		name=$(ls -w 1 $wm/autorun_files | $tools/menu.sh -p "Add Desktop:")
+		name=$(ls -w 1 $wm/init_files | $tools/menu.sh -p "Add Desktop:")
 		if [ $name ]; then
 			$tools/controller.sh add $name
 		fi
