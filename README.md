@@ -1,6 +1,7 @@
 # Window Manager
-
 This is the window manager I'm currently using. It is a core of bspwm with a bunch of custom bash scripts. The scripts use dmenu and dzen2 to interact with the user. Custom scripts are used to create a intuitive, minimal interface. Features include a intuitive dynamic pager, simple keyboard shortcuts, minimal easily extenseable configuration, easy to access help, and a unix based core designed to utilize the power of unix as much as possible.
+
+[TOC]
 
 ## Inspiration
 
