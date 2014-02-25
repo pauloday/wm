@@ -4,7 +4,6 @@ source $wm/style.sh
 bspc monitor -d "1/"
 bspc config window_gap $window_gap
 
-bspc config split_ratio 0.50
-bspc config bottom_padding $bottom_gap
-bspc config top_padding $top_gap
+bspc config split_ratio $split_ratio
+bspc config bottom_padding $(expr $bar_padding + $window_gap)
 $tools/bar.sh -y 1440

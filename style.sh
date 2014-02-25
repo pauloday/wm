@@ -4,6 +4,7 @@
 ### by default it tries to get as many things as it can from xrdb
 
 source $wm/saved_settings
+
 color_vals=( $(xrdb -query | grep -P "color[0-9]*" | sort | cut -f 2-) )
 count=0
 declare -A colors

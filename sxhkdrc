@@ -109,7 +109,11 @@ super + F1
 
 # set up appearence
 super + shift + s
-    $tools/setup.sh
+    $tools/setup.sh $wm/saved_settings;\
+    source $wm/saved_settings;\
+    bspc config split_ratio $split_ratio;\
+    bspc config window_gap $window_gap;\
+    bspc config bottom_padding $(expr $bar_padding + $window_gap)
 
 # audio, brightness adjustment
 
