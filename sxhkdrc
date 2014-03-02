@@ -80,7 +80,7 @@ super + shift + d
 
 # append a line to some desktop's autorun file
 super + a
-    $tools/add_autorun.sh
+    $tools/add_init.sh
 
 # rename desktop
 super + r
