@@ -5,7 +5,45 @@ This is the window manager I'm currently using. It is a core of bspwm with a bun
 
 ## Interface
 
-The window manager is tiling (see [bspwm's](https://github.com/baskerville/bspwm) scheme). Desktops are referenced by number. Initially, there is one unnamed desktop. New desktops are added by switching to a desktop that doesn't exist, unless the last last desktop is empty and unnamed. For example, if there is one desktop called "1/", and it contains no windows, the only way to create a new desktop is by adding a window (example <code>super + enter</code> to create a terminal). After that, a empty unnamed desktop can be added with <code>super + 2</code>
+The interface aims to be as simple as possible. It consists of keyboard shortcuts, all of which can be displayed with <code>super + F1</code>
+
+### Desktops
+
+The window manager is tiling (see [bspwm's](https://github.com/baskerville/bspwm) scheme). Desktops are referenced by numbers. Initially, there is one unnamed desktop.
+    ![Inital desktop layout](/screenshots/1.png)
+New desktops are added by switching to a desktop that doesn't exist, unless the last last desktop is empty and unnamed. For example, the initial configuration has one desktop called called "1/", and it contains no windows. The only way to create a new desktop is by adding a window, for example with <code>super + enter</code> to create a terminal.
+    ![After adding a terminal](/screenshots/2.png)
+After that, a empty unnamed desktop can be added with <code>super + 2</code>.
+    ![Switch to a empty desktop](/screenshots/3.png)
+Desktops can be renamed with <code>super + r</code>.
+    ![Rename focused desktops](/screenshots/4.png)
+After the desktop has a name, another empty desktop can be switched to:
+    ![Third empty desktop](/screenshots/5.png)
+Switching back to the first desktop (<code>super + 1</code>) removes the current empty one
+    ![Trailing empty desks are removed](/screenshots/6.png)
+Pressing <code>super + shift + 2</code> sends the focused window to desktop <code>2/sh</code>
+    ![Send desktops to other desktops](/screenshots/7.png)
+<code>super + shift + d</code> deletes all empty desktops (<code>super + alt +d</code> deletes a single desktop)
+    ![Delete empty desktops](/screenshots/8.png)
+Desktops can be saved by writing a script in <code>\$wm/init\_files</code>. <code>super + a</code> adds a line to a init script in <code>\$wm/init\_files</code>. A init script is named for the desktop it initializes:
+    ![Add named desktop called walls](/screenshots/9.png)
+    ![Run nitrogen on desktop start](/screenshots/a.png)
+A desktop is added with <code>super + d</code>:
+    ![Adding a named desktop](/screenshots/b.png)
+This creates a desktop called <code>walls</code>, switches to it, and runs <code>~/init_files/walls</code>.
+    ![New desktop](/screenshots/c.png)
+<code>super + tab</code> switches back to the last focused desktop
+    ![Switch to last desktop](/screenshots/d.png)
+    
+### Window Management
+
+Open a new web browser window.
+    ![New Chromium window](/screenshots/e.png)
+
+
+
+
+
 
 ## Inspiration
 
