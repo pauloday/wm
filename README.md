@@ -28,11 +28,6 @@ A desktop is added with <code>super + d</code>:
     ![Adding a named desktop](/screenshots/b.png)
 This creates a desktop called <code>walls</code>, switches to it, and runs <code>~/init_files/walls</code>.
     ![New desktop](/screenshots/c.png)
-<code>super + tab</code> switches back to the last focused desktop
-    ![Switch to last desktop](/screenshots/d.png)
-    
-Open a new web browser window.
-    ![New Chromium window](/screenshots/e.png)
 
 The interface aims to be as simple as possible. It consists of keyboard shortcuts, all of which can be displayed with <code>super + F1</code>
 
