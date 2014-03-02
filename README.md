@@ -3,11 +3,7 @@ This is the window manager I'm currently using. It is a core of bspwm with a bun
 
 [TOC]
 
-## Interface
-
-The interface aims to be as simple as possible. It consists of keyboard shortcuts, all of which can be displayed with <code>super + F1</code>
-
-### Desktops
+## Basic Usage
 
 The window manager is tiling (see [bspwm's](https://github.com/baskerville/bspwm) scheme). Desktops are referenced by numbers. Initially, there is one unnamed desktop.
     ![Inital desktop layout](/screenshots/1.png)
@@ -35,13 +31,10 @@ This creates a desktop called <code>walls</code>, switches to it, and runs <code
 <code>super + tab</code> switches back to the last focused desktop
     ![Switch to last desktop](/screenshots/d.png)
     
-### Window Management
-
 Open a new web browser window.
     ![New Chromium window](/screenshots/e.png)
 
-
-
+The interface aims to be as simple as possible. It consists of keyboard shortcuts, all of which can be displayed with <code>super + F1</code>
 
 
 
