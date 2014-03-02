@@ -3,6 +3,10 @@ This is the window manager I'm currently using. It is a core of bspwm with a bun
 
 [TOC]
 
+## Interface
+
+The window manager is tiling (see [bspwm's](https://github.com/baskerville/bspwm) scheme). Desktops are referenced by number. Initially, there is one unnamed desktop. New desktops are added by switching to a desktop that doesn't exist, unless the last last desktop is empty and unnamed. For example, if there is one desktop called "1/", and it contains no windows, the only way to create a new desktop is by adding a window (example <code>super + enter</code> to create a terminal). After that, a empty unnamed desktop can be added with <code>super + 2</code>
+
 ## Inspiration
 
 The idea behind the window manager is to compliment and enhance using a computer as a classic unix machine. I made it with the goal of being a simple window manager that has minimal  requirements and a minimal interface. Therefore I built it with a handful of programs and some bash scripts. This keeps the project focused - the goal is to provide powerful glue for powerful programs, and that is exactly what bash is. I also want a interface that can be customized to a degree that it is easy to use for generic browsing and quick work, but powerful enough to be useful for more in depth tasks.
@@ -96,6 +100,3 @@ This script implements my preferred logic for volume buttons. When the volume is
 
 #### brightness_change.sh
 Implements screen and keyboard brightness changes. Needs a rework
-
-
-> Written with [StackEdit](https://stackedit.io/).
