@@ -107,6 +107,10 @@ super + shift + t
 super + F1
     $tools/display_file.sh $wm/help.txt
 
+# add a timer to the bottom bar
+super + c
+    $tools/add_timer.sh
+
 # set up appearence
 super + shift + s
     $tools/setup.sh $wm/saved_settings;\

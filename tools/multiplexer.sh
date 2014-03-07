@@ -40,10 +40,6 @@ get_section() {
 }
 
 if [ -d "$dir" ]; then
-	if ! ps -p $(cat $dir/.pid); then
-		tail -f $dzen_pipe | dzen2 $@ &
-		echo $! > $dir/.pid
-	fi
 	section=$(get_section $dir $1)
 	while read line; do
 		echo $line > "$dir/$section"
@@ -55,7 +51,5 @@ else
 	mkfifo $dzen_pipe
 	touch $dir/0
 	trap "kill 0" EXIT
-	tail -f $dzen_pipe | dzen2 $@ &
-	echo $! > $dir/.pid
-	wait $(cat $dir/.pid)
+	tail -f $dzen_pipe | dzen2 $@
 fi
