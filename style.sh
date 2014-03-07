@@ -5,6 +5,13 @@
 
 source $wm/saved_settings
 
+## invert_colors string
+## prints string with a inverted color scheme
+invert_colors() {
+	 echo "^fg(${colors[bg]})^bg(${colors[fg]})  $1  \
+		 ^fg(${colors[fg]})^bg(${colors[bg]})"
+ }
+
 color_vals=( $(xrdb -query | grep -P "color[0-9]*" | sort | cut -f 2-) )
 count=0
 declare -A colors

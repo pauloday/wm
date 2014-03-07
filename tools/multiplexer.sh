@@ -27,7 +27,7 @@ gather_strings() {
 ## If arg exists and is a number, return it
 ## Else return the next section id from dir
 get_section() {
-	if [ "$2" -eq "$2" ] 2>/dev/null; then # arg is a number
+	if [ "$2" -eq "$2" ] 2>/dev/null; then # if arg is a number
 		echo $2
 		exit
 	fi
