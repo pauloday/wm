@@ -1,126 +1,130 @@
-##
-## window manager control
-##
+#H System Control
 
-# logout
+#H Logout
 super + alt + Escape
-    bspc quit
+	bspc quit
 
-# close focused window
+#H Reload sxhkdrc
+super + Escape
+	pkill -USR1 -x sxhkd
+
+
+#H Window Control
+
+#H Presel mode
+super + shift + {h, j, k, l}
+	bspc window -p {left, down, up, right}
+	
+#H Launch terminal
+super + Return
+	xterm
+
+#H Run command
+super + space
+	ls -u -w1 /bin | grep -E "^\w" | $tools/menu.sh
+
+#H Close window
+super + shift + q
+	bspc window -c
+
+#H Kill window
 super + shift + w
-    bspc window -c
+	bspc window -k
+ 
+#H Rotate layout
+super + ctrl + {a, s, d}
+	bspc desktop -R {90, 180, 270}
 
-# display window title bar
+#H Switch desktop layouts
+super + l
+	bspc desktop -l next
+
+#H Move focus around windows
+super + {_, shift} + a
+	bspc window -f {prev, next}
+
+#H Spins windows through positions
+super + {_, shift} + s
+	bspc desktop -C {forward, backward}
+
+#H Swap focus or posiion of this and largest window
+super + (_, shift) + d
+	bspc window {-f, -s} biggest
+
+#H Swap this and last window
+super + {_, shift} + f
+	bspc window {-f, -s} last
+
+#H Make this window fullscreen or floating
+super + {_, shift} + o
+	bspc window -t {floating, fullscreen}
+
+
+
+#H Desktop Control
+
+#H Go or send window to desk 1-10
+super + {_, shift} + {1-9,0}
+	$tools/switch_desks.sh {focus, window} ^{1-9,10}
+
+#H Add or remove a desktop
+super {_, ctrl} + q
+	$tools/pager.sh {add, remove}
+
+#H Delete empty desktops
+super + {_, ctrl} + w
+	$tools/controller.sh cleanup
+
+#H Trade desks with slot 1-10
+super + ctrl + {1-9,10}
+	$tools/controller.sh swap {1-9,0}
+
+#H Cycle through slots
+super + {_, shift} + Tab
+	$tools/switch_desks.sh focus {next, last}
+
+#H Rename desktop
+super + r
+	$tools/pager.sh rename
+
+
+
+#H Other
+
+#H Set up apperence
+super + b
+	$tools/setup.sh
+
+#H Start a countdown timer
+super + c
+	$tools/add_timer.sh
+
+#H Display help
+super + h
+	$tools/help.sh
+
+#H Toggle system tray
+super + shift + t
+	$tools/tray.sh
+
+#H Add a line to desktop init file
+super + i
+	$tools/add_init.sh
+
+#H Display window title bar
 super + w
-    $tools/toggle_window_title.sh
+	$tools/toggle_window_title.sh
 
-# switch layout between: tiled, monocle
-super + t
-    bspc desktop -l next
-
-# make all windows on desk equal area, or reset areas to default
-super + {_,shift} b
-    bspc desktop {-B,-E}
-
-# make window (f)loating or full(s)creen 
-super + {f,s}
-    bspc window -t {floating,fullscreen}
-
-# switch to last desk or window
-super + {grave,Tab}
-    bspc {window,desktop} -f last
-
-# cycle foreward or backward through windows
-super + {shift,ctrl} + grave
-    bspc window -f {older,newer}
-
-# cycle foreward or backward through desks
-super + {shift,ctrl} + Tab
-    bspc desktop -f {prev,next}
-
-# swap current and last window
-super + alt + grave
-    bspc window -s last
-
-# swap current and last desktop
-super + alt + Tab
-    $tools/controller.sh swap last 
-
-# move focus or window
-super + {_,shift} + {h,j,k,l}
-    bspc window -{f,s} {left,down,up,right}
-
-# switch window or focus to desk n
-super + {_,shift} + {1-9,0}
-    $tools/switch_desks.sh {focus,window} {1-9,10}
-
-# swap desktop with n
-super + ctrl + {1-9,0}
-    $tools/controller.sh swap {1-9,10}
+# misc
 
 # focus follows click
-~button1
-    bspc pointer -g focus
+^button1
+	bspc pointer -g focus
 
-# move, resize floating window
-super + {_,ctrl} + button1
-    bspc pointer -g {move,resize_corner}
-
-# make sure we don't grab the mouse when we shouldn't
-super + !button{1-3}
-    bspc pointer -t %i %i
-
-# add or remove desktop
-super + {_, alt} + d
-    $tools/pager.sh {add,remove}
-
-# remove all empty desktops
-super + shift + d
-    $tools/controller.sh cleanup
-
-# append a line to some desktop's autorun file
-super + a
-    $tools/add_init.sh
-
-# rename desktop
-super + r
-    $tools/pager.sh rename
-
-
-##
-## utilities - non window manager management
-##
-
-# launch terminal
-super + Return
-    xterm
-
-# launch program
-super + space
-    ls -w 1 /usr/bin | $tools/menu.sh | bash
-
-# toggle system tray
-super + shift + t
-    $tools/tray.sh
-
-# display help
-super + F1
-    $tools/display_file.sh $wm/help.txt
-
-# add a timer to the bottom bar
-super + c
-    $tools/add_timer.sh
-
-# set up appearence
-super + shift + s
-    $tools/setup.sh $wm/saved_settings;\
-    source $wm/saved_settings;\
-    bspc config split_ratio $split_ratio;\
-    bspc config window_gap $window_gap;\
-    bspc config bottom_padding $(expr $bar_padding + $window_gap)
-
-# audio, brightness adjustment
-
+# make sure we don't grab the mouse when we don't need to
+super + !button(1-3)
+	bspc pointer -t %i %i
+ 
 {shift,_} + XF86AudioRaiseVolume
     $tools/volume_change.sh {1,5}
 
@@ -145,3 +149,4 @@ XF86KbdBrightnessDown
 # make sxhkd reload its configuration files:
 super + Escape
     pkill -USR1 -x sxhkd
+

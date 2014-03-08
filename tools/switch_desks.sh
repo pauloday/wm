@@ -32,7 +32,7 @@ windows() {
 	echo $(bspc query -d $1 -W)
 }
 
-if [ "$2" -gt "$num_desks" ]; then
+if [ "$(echo $2 | tr -d '^')" -gt "$num_desks" ]; then
 	if [ "$(name $last_desk)" -o "$(windows $last_desk)" ]; then
 		name=$($tools/controller.sh new)
 		switch $1 "$name"
@@ -42,7 +42,7 @@ if [ "$2" -gt "$num_desks" ]; then
 	exit
 fi
 
-switch $1 "^$2"
+switch $1 "$2"
 
 if [ ! "$(name $last_desk)" -a ! "$(windows $last_desk)" ]; then
 	if [ ! "$(bspc query -d focused -D)" = "$last_desk" ]; then
