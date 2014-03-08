@@ -40,10 +40,10 @@ super + l
 	bspc desktop -l next
 
 #H Move focus around windows
-super + {_, shift} + a
+super + {_, shift} + Tab
 	bspc window -f {prev, next}
 
-#H Spins windows through positions
+#H Spin windows through positions
 super + {_, shift} + s
 	bspc desktop -C {forward, backward}
 
@@ -80,7 +80,7 @@ super + ctrl + {1-9,10}
 	$tools/controller.sh swap {1-9,0}
 
 #H Cycle through slots
-super + {_, shift} + Tab
+super + {_, shift} + grave
 	$tools/switch_desks.sh focus {next, last}
 
 #H Rename desktop
