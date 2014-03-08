@@ -21,7 +21,7 @@ super + Return
 
 #H Run command
 super + space
-	ls -u -w1 /bin | grep -E "^\w" | $tools/menu.sh
+	ls -u -w1 /bin | grep -E "^\w" | $tools/menu.sh | bash
 
 #H Close window
 super + shift + q
