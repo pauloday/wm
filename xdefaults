@@ -25,7 +25,8 @@
 !!green     #859900  2/2 green     64 #5f8700 60 -20  65 133 153   0  68 100  60
 
 
-!! This is the `light' solarized scheme, for `dark' see https://github.com/altercation/solarized/blob/master/xresources-colors-solarized/Xresources
+!! This is the `light' solarized scheme, for `dark' see 
+!! https://github.com/altercation/solarized/blob/master/xresources-colors-solarized/Xresources
 
 #define S_base02        #073642
 #define S_base01        #586e75
@@ -44,7 +45,7 @@
 #define S_green         #859900
 #define S_base03        #002b36
 
-XTerm*faceName: termsyn
+XTerm*font: Liberation Mono:size=12
 dzen2*font: Roboto Condensed:size=12:bold
 dzen2*background: S_base3
 dzen2*foreground: S_base00

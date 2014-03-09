@@ -8,7 +8,7 @@ source $wm/saved_settings
 ## invert_colors string
 ## prints string with a inverted color scheme
 invert_colors() {
-	 echo "^fg(${colors[bg]})^bg(${colors[fg]})  $1  \
+	 echo "^fg(${colors[bg]})^bg(${colors[fg]})$1\
 		 ^fg(${colors[fg]})^bg(${colors[bg]})"
  }
 

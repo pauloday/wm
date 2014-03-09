@@ -10,18 +10,23 @@ super + Escape
 
 
 #H Window Control
-
-#H Presel mode
-super + shift + {h, j, k, l}
-	bspc window -p {left, down, up, right}
 	
-#H Launch terminal
+#H Launch terminal, push to make room
 super + Return
 	xterm
+	
+#H Open a terminal, split to make room
+super + shift + {h, j, k, l}
+	bspc window -p {left, down, up, right}; xterm
 
 #H Run command
 super + space
 	ls -u -w1 /bin | grep -E "^\w" | $tools/menu.sh | bash
+
+#H Run command, split to make room
+super + ctrl + {h, j, k, l}
+	bspc window -p {left, down, up, right};\
+	 ls -u -w1 /bin | grep -E "^\w" | $tools/menu.sh | bash
 
 #H Close window
 super + shift + q
@@ -33,23 +38,22 @@ super + shift + w
  
 #H Rotate layout
 super + ctrl + {a, s, d}
-	bspc desktop -R {90, 180, 270}
 
 #H Switch desktop layouts
 super + l
 	bspc desktop -l next
 
-#H Move focus around windows
+#H Rotate the focus
 super + {_, shift} + Tab
 	bspc window -f {prev, next}
 
-#H Spin windows through positions
+#H Rotate the windows
 super + {_, shift} + s
 	bspc desktop -C {forward, backward}
 
-#H Swap focus or posiion of this and largest window
-super + (_, shift) + d
-	bspc window {-f, -s} biggest
+#H Rotate the layout
+super + {_, ctrl, shift} + d
+	bspc desktop -R {90, 180, 270}
 
 #H Swap this and last window
 super + {_, shift} + f
@@ -79,9 +83,9 @@ super + {_, ctrl} + w
 super + ctrl + {1-9,10}
 	$tools/controller.sh swap {1-9,0}
 
-#H Cycle through slots
-super + {_, shift} + grave
-	$tools/switch_desks.sh focus {next, last}
+#H Go back to last slot
+super + grave
+	$tools/switch_desks.sh focus last
 
 #H Rename desktop
 super + r
@@ -101,7 +105,7 @@ super + c
 
 #H Display help
 super + h
-	$tools/help.sh
+	$tools/help.sh $wm/sxhkdrc -fn "Mono"
 
 #H Toggle system tray
 super + shift + t
@@ -114,6 +118,11 @@ super + i
 #H Display window title bar
 super + w
 	$tools/toggle_window_title.sh
+
+#H Open a manpage
+super + m
+	xterm -e "man $(apropos . | $tools/menu.sh -noinput -p 'Manpage;')"
+
 
 # misc
 
