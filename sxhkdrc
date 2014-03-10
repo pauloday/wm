@@ -105,7 +105,7 @@ super + c
 
 #H Display help
 super + h
-	$tools/help.sh $wm/sxhkdrc -fn "Mono"
+	$tools/help.sh $wm/sxhkdrc -fn "Droid Sans mono"
 
 #H Toggle system tray
 super + shift + t
