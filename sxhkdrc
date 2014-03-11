@@ -36,9 +36,6 @@ super + shift + q
 super + shift + w
 	bspc window -k
  
-#H Rotate layout
-super + ctrl + {a, s, d}
-
 #H Switch desktop layouts
 super + l
 	bspc desktop -l next
