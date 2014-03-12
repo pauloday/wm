@@ -6,4 +6,4 @@
 ## OPTIONS are dmenu options
 
 source $wm/style.sh
-dmenu -f -i -dim 0.4 -nf "${colors[fg]}" -nb "${colors[bg]}" -sf "${colors[bg]}" -sb "${colors[fg]}" -fn "$font" "$@"
+dmenu -f -i -dim 0.4 -nf "$fg" -nb "$bg" -sf "$bg" -sb "$fg" -fn "$font" "$@"

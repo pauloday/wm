@@ -8,13 +8,13 @@ source $wm/saved_settings
 ## invert_colors string
 ## prints string with a inverted color scheme
 invert_colors() {
-	 echo "^fg(${colors[bg]})^bg(${colors[fg]})$1\
-		 ^fg(${colors[fg]})^bg(${colors[bg]})"
+	echo "^fg($bg)^bg($fg)$1\
+		 ^fg($fg)^bg($bg)"
  }
 
 colors=( $(xrdb -query | grep -P "color[0-9]*" | sort | cut -f 2-) )
 color_names=(
-	black 
+	black
 	brightgreen 
 	brightyellow
 	brightblue
@@ -30,10 +30,10 @@ color_names=(
 	white
 	grey
 	brightred )
-count=1
+count=0
 
-for name in $color_names; do
-	eval "$name=${colors[$count]}"
+for name in ${colors[@]}; do
+	eval "${color_names[$count]}=$name"
 	((count++))
 done
 

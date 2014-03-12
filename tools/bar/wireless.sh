@@ -11,6 +11,6 @@ while true; do
 		quality=NA
 	fi
 
-	echo "^fg()^i($tools/bar/icons/wifi_02.xbm) $quality ^fg(${colors[grey]})|"
+	echo "^fg()^i($tools/bar/icons/wifi_02.xbm) $quality ^fg()|"
 	sleep $1
 done
