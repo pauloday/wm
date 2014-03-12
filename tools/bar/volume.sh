@@ -9,9 +9,9 @@ mute=$(pamixer --get-mute)
 icons="$tools/bar/icons"
 
 if [ "$mute" == true ]; then
-	style="^fg(${colors[red]})^i($icons/spkr_02.xbm) "
+	style="^fg($red)^i($icons/spkr_02.xbm) "
 else
-	style="^fg(${colors[green]})^i($icons/spkr_01.xbm) "
+	style="^fg($green)^i($icons/spkr_01.xbm) "
 fi
 
-echo "$style$volume% ^fg(${colors[grey]})|"
+echo "$style$volume% ^fg()|"

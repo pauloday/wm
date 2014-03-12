@@ -3,10 +3,9 @@
 ### Reads a line from controller.sh list and styles it for dzen
 
 source $wm/style.sh
-occupied_color=${colors[fg]}
-free_color=${colors[brightcyan]}
-bg_color=${colors[bg]}
-
+occupied_color=$fg
+free_color=$brightcyan
+bg_color=$bg
 while read line; do
 	echo $line |
 	sed "s/:O/^fg($bg_color)^bg($occupied_color)/g" |
