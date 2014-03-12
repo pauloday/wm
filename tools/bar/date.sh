@@ -7,6 +7,6 @@ source $wm/style.sh
 while true; do
 	time=$(date +"%_I:%M %p")
 	date=$(date +"%D")
-	echo "$date $time"
+	echo "^fg($black)$date $time"
 	sleep $1
 done
