@@ -4,6 +4,8 @@ source $wm/style.sh
 bspc monitor -d "1/"
 bspc config window_gap $window_gap
 
+bsoc config focus_follows_pointer true
+
 bspc config split_ratio $split_ratio
 bspc config bottom_padding $(expr $bar_padding + $window_gap)
 
