@@ -10,12 +10,12 @@
 token="#H"
 pad_char=' '
 file=$1
-pid_file="/tmp/help.pid"
+pidfile="/tmp/help.pid"
 shift
 
-if [ -f $pid_file ]; then
-	kill -9 $(cat $pid_file)
-	rm -rf $pid_file
+if [ -f $pidfile ]; then
+	kill -9 $(cat $pidfile)
+	rm -rf $pidfile
 	exit
 fi
 
@@ -44,4 +44,4 @@ length=$(expr $(echo "$text" | wc -l) - 2)
 events='onstart=uncollapse'
 
 echo -n "$text" | dzen2 -ta l -p -l "$length" -e "$events" "$@" &
-echo $! > $pid_file
+echo $! > $pidfile

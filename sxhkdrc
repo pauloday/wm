@@ -136,7 +136,7 @@ super + i
 	$tools/add_init.sh
 
 #H Display window title bar
-super + w
+super + t
 	$tools/toggle_window_title.sh
 
 #H Open a manpage
