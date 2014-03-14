@@ -9,6 +9,8 @@
 ###	":[O|o|F|f] <desktop1> [...] <desktop2>"
 ### 	where a o means occupied, f means free, and a capital letter means focused
 
+source $wm/saved_settings
+
 ## get_simple_name desktop
 ## removes the n/ from the front of a desktop name
 get_simple_name() {
@@ -49,6 +51,7 @@ new_desktop() {
 	num_desks=$(bspc query -D | wc -l)
 	name="$(expr $num_desks + 1)/$1"
 	bspc monitor -a $name
+	bspc config border_width $border_width
 	echo $name
 }
 
