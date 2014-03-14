@@ -83,14 +83,24 @@ super + {j, k}
 	bspc window -e up $\{S\}20 || \
 	bspc window -e down $\{S\}20
 
-#H Resize window by holding ctrl and clicking (must be floating)
+#H Move floating window
 super + button1
-	bspc pointer -g resize_corner
+	bspc pointer -g move
 
 super + !button1
 	bspc pointer -t %i %i
 
 super + @button1
+	bspc pointer -u
+
+#H Resize floating window 
+super + ctrl + button1
+	bspc pointer -g resize_corner
+
+super + {_, ctrl} + !button1
+	bspc pointer -t %i %i
+
+super + {_, ctrl} + @button1
 	bspc pointer -u
 
 #H Desktop Control
@@ -124,7 +134,7 @@ super + c
 	$tools/add_timer.sh
 
 #H Display help
-super + p
+super + F1 
 	$tools/help.sh $wm/sxhkdrc -fn "Monospace"
 
 #H Toggle system tray
