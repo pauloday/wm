@@ -8,7 +8,6 @@ super + alt + Escape
 super + Escape
 	pkill -USR1 -x sxhkd
 
-
 #H Window Control
 	
 #H Launch terminal, push to make room
@@ -28,39 +27,71 @@ super + ctrl + {h, j, k, l}
 	bspc window -p {left, down, up, right};\
 	 ls -u -w1 /bin | grep -E "^\w" | $tools/menu.sh | bash
 
-#H Close window
-super + shift + q
+#H End (close) window
+super + ctrl + e
 	bspc window -c
 
-#H Kill window
-super + shift + w
+#H Force close window
+super + shift + e
 	bspc window -k
- 
+
+#H Go back to last window
+super + Tab
+	bspc window -f older
+
+#H Go back to last desktop
+super + ctrl + Tab
+	bspc desktop -f older
+
 #H Switch desktop layouts
-super + l
+super + shift + Tab
 	bspc desktop -l next
 
+#H Swap with last window
+super + grave
+	bspc window -s older
+
+#H Swap with last desktop
+super + ctrl + grave
+	bspc desktop -s older
+
 #H Rotate the focus
-super + {_, shift} + Tab
+super + {q, w} 
 	bspc window -f {prev, next}
 
+#H Rotate the layout
+super + ctrl + {q, w}
+	bspc desktop -R {90, 270}
+
 #H Rotate the windows
-super + {_, shift} + s
+super + shift + {q, w}
 	bspc desktop -C {forward, backward}
 
-#H Rotate the layout
-super + {_, ctrl, shift} + d
-	bspc desktop -R {90, 180, 270}
+#H Make this window float, fullscreen, or sticky
+super + {_, shift, ctrl} + f
+	bspc window -t {floating, fullscreen, sticky}
 
-#H Swap this and last window
-super + {_, shift} + f
-	bspc window {-f, -s} last
+#H Resize left/right
+super + {h, l}
+	S={-,+}; \
+	bspc window -e left $\{S\}20 || \
+	bspc window -e right $\{S\}20
 
-#H Make this window fullscreen or floating
-super + {_, shift} + o
-	bspc window -t {floating, fullscreen}
+#H Resize up/down
+super + {j, k}
+	S={+,-}; \
+	bspc window -e up $\{S\}20 || \
+	bspc window -e down $\{S\}20
 
+#H Resize window by holding ctrl and clicking (must be floating)
+super + button1
+	bspc pointer -g resize_corner
 
+super + !button1
+	bspc pointer -t %i %i
+
+super + @button1
+	bspc pointer -u
 
 #H Desktop Control
 
@@ -68,21 +99,13 @@ super + {_, shift} + o
 super + {_, shift} + {1-9,0}
 	$tools/switch_desks.sh {focus, window} ^{1-9,10}
 
-#H Add or remove a desktop
-super {_, ctrl} + q
-	$tools/pager.sh {add, remove}
-
-#H Delete empty desktops
-super + {_, ctrl} + w
-	$tools/controller.sh cleanup
+#H Add, cleanup, remove desktops
+super {_, ctrl, shift} + d
+	$tools/pager.sh {add, cleanup, remove}
 
 #H Trade desks with slot 1-10
 super + ctrl + {1-9,10}
 	$tools/controller.sh swap {1-9,0}
-
-#H Go back to last slot
-super + grave
-	$tools/switch_desks.sh focus last
 
 #H Rename desktop
 super + r
@@ -101,8 +124,8 @@ super + c
 	$tools/add_timer.sh
 
 #H Display help
-super + h
-	$tools/help.sh $wm/sxhkdrc -fn "Droid Sans mono"
+super + p
+	$tools/help.sh $wm/sxhkdrc -fn "Monospace"
 
 #H Toggle system tray
 super + shift + t

@@ -45,3 +45,7 @@ font=$(xrdb -query | grep -P "dzen2[\*\.]font:" | sed 's/dzen2[\*\.]font:\(.*\)/
 resolution=$(xdpyinfo | grep dimensions | awk '{print $2}')
 screen_width=$(echo $resolution | awk -Fx '{print $1}')
 screen_height=$(echo $resolution | awk -Fx '{print $2}')
+focused=$green
+normal=$yellow
+focused_sticky=$blue
+normal_sticky=$cyan
